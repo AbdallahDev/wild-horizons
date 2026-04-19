@@ -9,7 +9,7 @@ const server = http.createServer((req, res) => {
     res.write("Another data\n")
 
     if (req.url === "/") {
-        res.end("Hello, From my api ❤️ 3", 'utf-8', () => console.log("responsed has finished."))
+        res.end("Hello, From my api ❤️", 'utf-8', () => console.log("responsed has finished."))
     } else {
         res.end()
     }

@@ -6,7 +6,9 @@
   "author": "Abdallah",
   "type": "module",
   "main": "server.js",
-  "scripts": {},
+  "scripts": {
+    "start": "nodemon server.js"
+  },
   "devDependencies": {
     "nodemon": "^3.1.14"
   }
