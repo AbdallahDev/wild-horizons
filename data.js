@@ -1,5 +1,6 @@
 export const data = [
   {
+    id: 1,
     name: "Petra",
     location: "Ma'an",
     country: "Jordan",
@@ -18,6 +19,7 @@ export const data = [
     uuid: "7c9e6670-de2e-11ed-b5ea-0242ac120001",
   },
   {
+    id: 2,
     name: "The Door to Hell",
     location: "Darvaza",
     country: "Turkmenistan",
@@ -36,6 +38,7 @@ export const data = [
     uuid: "550e8400-e29b-41d4-a716-446655440001",
   },
   {
+    id: 3,
     name: "Waitomo Glowworm Caves",
     location: "Waitomo",
     country: "New Zealand",
@@ -54,6 +57,7 @@ export const data = [
     uuid: "550e8400-e29b-41d4-a716-446655440002",
   },
   {
+    id: 4,
     name: "Underwater Waterfall",
     location: "Le Morne",
     country: "Mauritius",
@@ -72,6 +76,7 @@ export const data = [
     uuid: "550e8400-e29b-41d4-a716-446655440003",
   },
   {
+    id: 5,
     name: "Al-Ula",
     location: "Al-Ula",
     country: "Saudi Arabia",
@@ -90,6 +95,7 @@ export const data = [
     uuid: "7c9e6670-de2e-11ed-b5ea-0242ac120005",
   },
   {
+    id: 6,
     name: "Grand Canyon",
     location: "Arizona",
     country: "USA",
@@ -108,6 +114,7 @@ export const data = [
     uuid: "550e8400-e29b-41d4-a716-446655440006",
   },
   {
+    id: 7,
     name: "Santorini",
     location: "Cyclades",
     country: "Greece",
@@ -126,6 +133,7 @@ export const data = [
     uuid: "550e8400-e29b-41d4-a716-446655440007",
   },
   {
+    id: 8,
     name: "Pyramids of Giza",
     location: "Giza",
     country: "Egypt",
@@ -144,6 +152,7 @@ export const data = [
     uuid: "550e8400-e29b-41d4-a716-446655440008",
   },
   {
+    id: 9,
     name: "Colosseum",
     location: "Rome",
     country: "Italy",
@@ -162,6 +171,7 @@ export const data = [
     uuid: "550e8400-e29b-41d4-a716-446655440009",
   },
   {
+    id: 10,
     name: "Machu Picchu",
     location: "Cusco Region",
     country: "Peru",
@@ -180,6 +190,7 @@ export const data = [
     uuid: "550e8400-e29b-41d4-a716-446655440010",
   },
   {
+    id: 11,
     name: "Great Wall of China",
     location: "Northern China",
     country: "China",
@@ -198,6 +209,7 @@ export const data = [
     uuid: "550e8400-e29b-41d4-a716-446655440011",
   },
   {
+    id: 12,
     name: "Victoria Falls",
     location: "Livingstone",
     country: "Zambia",

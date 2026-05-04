@@ -1,41 +1,47 @@
 import http from "node:http";
 import { fetchData } from "./db.js";
-import { sendJSONResponse } from "./utility.js";
+import { sendJSONResponse, filteredResponse } from "./utility.js";
 
 const port = 8080;
 
 const server = http.createServer(async (req, res) => {
-  const errorResponse = {
+  const errorObject = {
     status: "fail",
     message: "The requested URL not found",
     statusCode: 404,
   };
   const destinations = await fetchData();
-  const requestedContinent = decodeURIComponent(
+  const requestedData = decodeURIComponent(
     req.url.split("/").pop().toLowerCase(),
   );
-  if (req.url.startsWith("/api/continent/") && req.method === "GET") {
-    if (requestedContinent === "all") {
-      sendJSONResponse(res, 200, destinations);
-    }
-    //here i'll check if the user requested a spesific continent
-    else {
-      const continentLocations = destinations.filter(
-        (destenation) =>
-          destenation.continent.toLowerCase() === requestedContinent,
-      );
-      if (continentLocations.length)
-        sendJSONResponse(res, 200, continentLocations);
-      else {
-        errorResponse.message = "The requested continent not found.";
-        sendJSONResponse(res, 404, errorResponse);
-      }
-    }
+
+  if (req.url === "/api" && req.method === "GET") {
+    sendJSONResponse(res, 200, destinations);
+  } else if (req.url.startsWith("/api/continent")) {
+    const filterdDestinations = destinations.filter(
+      (destenation) => destenation.continent.toLowerCase() === requestedData,
+    );
+    filteredResponse(
+      res,
+      filterdDestinations,
+      errorObject,
+      "The requested continent not found.",
+    );
+  } else if (req.url.startsWith("/api/country")) {
+    const filterdDestinations = destinations.filter(
+      (destenation) => destenation.country.toLowerCase() === requestedData,
+    );
+    filteredResponse(
+      res,
+      filterdDestinations,
+      errorObject,
+      "The requested country not listed",
+    );
   }
   //here the else will be excuted when the user request a wrong url
   else {
-    errorResponse.message = "The requested URL not found";
-    sendJSONResponse(res, 404, errorResponse);
+    errorObject.message = "The requested URL not found";
+    sendJSONResponse(res, 404, errorObject);
   }
   res.end();
 });
