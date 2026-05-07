@@ -1,14 +1,27 @@
-export const sendJSONResponse = (response, statusCode, responseData) => {
-  response.statusCode = statusCode;
-  response.setHeader("content-type", "application/json");
-  response.write(JSON.stringify(responseData));
+const errorMessages = {
+  continent: "The requested continent not found.",
+  country: "The requested country not listed",
 };
+// export const sendJSONResponse = (response, statusCode, data) => {
+//   response.statusCode = statusCode;
+//   response.setHeader("content-type", "application/json");
+//   response.write(JSON.stringify(data));
+// };
 
-export const filteredResponse = (response, filterdDestinations,errorObject,errorMessage) => {
-  if (filterdDestinations.length)
-    sendJSONResponse(response, 200, filterdDestinations);
-  else {
-    errorObject.message = errorMessage;
-    sendJSONResponse(response, 404, errorObject);
+const filterdDestinations = (destinations, queryObj) => {
+  if (queryObj.country) {
+    return destinations.filter((destenation) => {
+      return (
+        destenation.country.toLowerCase() === queryObj.country.toLowerCase()
+      );
+    });
+  } else if (queryObj.continent) {
+    return destinations.filter((destenation) => {
+      return (
+        destenation.continent.toLowerCase() === queryObj.continent.toLowerCase()
+      );
+    });
+  } else {
+    return destinations;
   }
 };

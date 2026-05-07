@@ -24,7 +24,7 @@ export const data = [
     location: "Darvaza",
     country: "Turkmenistan",
     continent: "Asia",
-    is_open_to_public: true,
+    is_open_to_public: false,
     details: [
       {
         fun_fact:
@@ -157,7 +157,7 @@ export const data = [
     location: "Rome",
     country: "Italy",
     continent: "Europe",
-    is_open_to_public: true,
+    is_open_to_public: false,
     details: [
       {
         fun_fact:
@@ -214,7 +214,7 @@ export const data = [
     location: "Livingstone",
     country: "Zambia",
     continent: "Africa",
-    is_open_to_public: true,
+    is_open_to_public: false,
     details: [
       {
         fun_fact:
