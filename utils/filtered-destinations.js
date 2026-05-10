@@ -1,28 +1,28 @@
 export const returnFilterdDestinations = (destinations, queryObj) => {
-  let result = destinations;
+  const { continent, country, is_open_to_public } = queryObj;
 
   //here i'll check if the user specefied the continent
-  if (queryObj.continent)
-    result = result.filter(
+  if (continent)
+    destinations = destinations.filter(
       (destination) =>
         destination.continent.toLowerCase() ===
         queryObj.continent.toLowerCase(),
     );
 
   //here i'll check for the country
-  if (queryObj.country)
-    result = result.filter(
+  if (country)
+    destinations = destinations.filter(
       (destination) =>
         destination.country.toLowerCase() === queryObj.country.toLowerCase(),
     );
 
   //here i'll check for is_open_to_public parameter
-  if (queryObj.is_open_to_public) {
-    const is_open_to_public = queryObj.is_open_to_public === "true";
-    result = result.filter(
-      (destination) => destination.is_open_to_public === is_open_to_public,
+  if (is_open_to_public)
+    destinations = destinations.filter(
+      (destination) =>
+        destination.is_open_to_public ===
+        JSON.parse(is_open_to_public.toLowerCase()),
     );
-  }
 
-  return result;
+  return destinations;
 };
