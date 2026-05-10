@@ -1,7 +1,7 @@
 import http from "node:http";
 import { fetchData } from "./db.js";
 import { sendJSONResponse } from "./utils/send-json-response.js";
-import { returnFilterdDestinations } from "./utils/filtered-destinations.js";
+import { returnFilterdDestinations } from "./utils/filter-destinations.js";
 
 const port = 8000;
 
