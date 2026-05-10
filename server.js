@@ -11,11 +11,17 @@ const server = http.createServer(async (req, res) => {
 
   const destinations = await fetchData();
   if (urlObj.pathname === "/api" && req.method === "GET") {
-    const filterdDestinations = returnFilterdDestinations(
-      destinations,
-      queryObj,
-    );
-    sendJSONResponse(res, 200, filterdDestinations);
+    const responseData = returnFilterdDestinations(destinations, queryObj);
+
+    if (!Array.isArray(responseData)) {
+      sendJSONResponse(res, 400, responseData);
+    } else if (responseData.length === 0) {
+      sendJSONResponse(res, 404, {
+        status: "No data found",
+        message: "There is no data found for the specefied parameters.",
+        statusCode: 404,
+      });
+    } else sendJSONResponse(res, 200, responseData);
   } else {
     sendJSONResponse(res, 404, {
       status: "fail",
