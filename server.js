@@ -14,7 +14,7 @@ const server = http.createServer(async (req, res) => {
     const responseData = returnFilterdDestinations(destinations, queryObj);
 
     if (!Array.isArray(responseData)) {
-      sendJSONResponse(res, 400, responseData);
+      sendJSONResponse(res, responseData.statusCode, responseData);
     } else if (responseData.length === 0) {
       sendJSONResponse(res, 404, {
         status: "No data found",

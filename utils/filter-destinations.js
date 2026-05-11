@@ -1,8 +1,16 @@
 export const returnFilterdDestinations = (destinations, queryObj) => {
   const allowedQueries = ["continent", "country", "is_open_to_public"];
-  const userQueries = Object.keys(queryObj).every((key) =>
-    allowedQueries.includes(key.toLowerCase()),
-  );
+  const userQueries = Object.entries(queryObj).every(([key, value]) => {
+    key = key.toLowerCase();
+    value = value.toLowerCase();
+
+    if (!allowedQueries.includes(key)) return false;
+
+    if (key === "is_open_to_public" && !(value === "true" || value === "false"))
+      return false;
+
+    return true;
+  });
 
   if (userQueries) {
     const { continent, country, is_open_to_public } = queryObj;
@@ -22,18 +30,20 @@ export const returnFilterdDestinations = (destinations, queryObj) => {
       );
 
     //here i'll check for is_open_to_public parameter
-    if (is_open_to_public)
+    if (is_open_to_public === "true" || is_open_to_public === "false")
       destinations = destinations.filter(
         (destination) =>
           destination.is_open_to_public ===
           JSON.parse(is_open_to_public.toLowerCase()),
       );
+    // else break;
 
     return destinations;
   } else
     return {
-      status: "No data found",
-      message: "There is no data found for the specefied parameters.",
-      statusCode: 404,
+      status: "something wrong with the query",
+      message:
+        "There is something wrong with the query for the specefied parameters.",
+      statusCode: 400,
     };
 };
